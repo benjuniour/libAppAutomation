@@ -7,6 +7,7 @@ class BookDataService:
         self.random_idx_tracker = 0
         self.all_table_rows = book_request.select("tr")
         self.book_details = {}
+        self.isbn_numbers = []
         
     def getBookData(self):
         
@@ -36,6 +37,7 @@ class BookDataService:
     def addBookToBookDetails(self, bookTitle, bookISBN, bookCallNumber, bookLink): 
         additional_bookInfo = []
         additional_bookInfo.append(bookISBN)
+        self.isbn_numbers.append(bookISBN)
         additional_bookInfo.append(bookCallNumber)
         additional_bookInfo.append(bookLink)
         #adding the new book information to our dictionary
@@ -43,6 +45,9 @@ class BookDataService:
 
     def getBookDetails(self):
         return self.book_details
+    
+    def getAllISBN(self):
+        return self.isbn_numbers
     
     
 if __name__ == "__main__":
